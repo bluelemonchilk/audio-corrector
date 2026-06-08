@@ -1,6 +1,7 @@
 import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
+matplotlib.use('Agg')
 from scipy.fftpack import fft, ifft
 from scipy.io import wavfile
 from scipy.signal import resample_poly
@@ -103,7 +104,7 @@ if file1 and file2 and file3:
         #alpha = 0.001 * np.max(np.abs(spectrum_heard))**2
         
         # Физически это: (Original * Heard*) / (|Heard|^2 + alpha)
-        koeff_usilenia_base = (spectrum_original * np.conjuget(spectrum_heard) if hasattr(np, 'conjuget') else spectrum_original * np.conj(spectrum_heard)) / (np.abs(spectrum_heard)**2)
+        koeff_usilenia_base = (spectrum_original * np.conj(spectrum_heard)) / (np.abs(spectrum_heard)**2 + 1e-12)
         
         # Ограничиваем пики коэффициента по амплитуде (наш max_gain)
         gain_magnitude = np.abs(koeff_usilenia_base)
@@ -209,7 +210,8 @@ if file1 and file2 and file3:
             ax.set_ylabel("Амплитуда")
             ax.grid(True, alpha=0.3)
             
-        plt.tight_layout()
+       plt.tight_layout()
         st.pyplot(fig)
+        plt.close(fig)   
 else:
     st.info("💡 Загрузите калибровочные эталоны и аудиофайл для исправления.")
