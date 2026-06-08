@@ -1,7 +1,8 @@
 import streamlit as st
 import numpy as np
-import matplotlib.pyplot as plt
+import matplotlib
 matplotlib.use('Agg')
+import matplotlib.pyplot as plt
 from scipy.fftpack import fft, ifft
 from scipy.io import wavfile
 from scipy.signal import resample_poly
