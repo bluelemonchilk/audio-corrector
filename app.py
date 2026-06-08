@@ -103,7 +103,8 @@ if file1 and file2 and file3:
         #alpha = 0.001 * np.max(np.abs(spectrum_heard))**2
         
         # Физически это: (Original * Heard*) / (|Heard|^2 + alpha)
-        koeff_usilenia_base = (spectrum_original * np.conjuget(spectrum_heard) if hasattr(np, 'conjuget') else spectrum_original * np.conj(spectrum_heard)) / (np.abs(spectrum_heard)**2)
+        alpha = 1e-6 * np.max(np.abs(spectrum_heard))**2
+        koeff_usilenia_base = (spectrum_original * np.conj(spectrum_heard)) / (np.abs(spectrum_heard)**2 + alpha)
         
         # Ограничиваем пики коэффициента по амплитуде (наш max_gain)
         gain_magnitude = np.abs(koeff_usilenia_base)
