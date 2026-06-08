@@ -75,7 +75,7 @@ if file1 and file2 and file3:
         spectrum_heard = fft(audio2_calib)
         
         # Исправленный коэффициент с регуляризацией
-        koeff_usilenia_base = (spectrum_original * np.conj(spectrum_heard)) / (np.abs(spectrum_heard)**2 + 1e-12)
+        koeff_usilenia_base = (spectrum_original * np.conj(spectrum_heard)) / (np.abs(spectrum_heard)**2)
         max_gain = 5.0
         gain_magnitude = np.abs(koeff_usilenia_base)
         too_high_gain = gain_magnitude > max_gain
