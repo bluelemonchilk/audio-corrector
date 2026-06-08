@@ -211,7 +211,7 @@ if file1 and file2 and file3:
             ax.grid(True, alpha=0.3)
             
        plt.tight_layout()
-        st.pyplot(fig)
-        plt.close(fig)   
+       st.pyplot(fig)
+       plt.close(fig)   
 else:
     st.info("💡 Загрузите калибровочные эталоны и аудиофайл для исправления.")
