@@ -76,7 +76,7 @@ if file1 and file2 and file3:
         
         # Исправленный коэффициент с регуляризацией
         koeff_usilenia_base = (spectrum_original * np.conj(spectrum_heard)) / (np.abs(spectrum_heard)**2)
-        max_gain = 5.0
+        max_gain = 50.0
         gain_magnitude = np.abs(koeff_usilenia_base)
         too_high_gain = gain_magnitude > max_gain
         koeff_usilenia_base[too_high_gain] = (koeff_usilenia_base[too_high_gain] / gain_magnitude[too_high_gain]) * max_gain
