@@ -1,7 +1,7 @@
 import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy.fftpack import fft, ifft
+from scipy.fft import fft, ifft
 from scipy.io import wavfile
 from scipy.signal import resample_poly
 import io
@@ -95,7 +95,7 @@ if file1 and file2 and file3:
         
         # --- ОБНОВЛЕННАЯ НАСТРОЙКА ФИЛЬТРАЦИИ ШУМА ---
         # Вы можете менять max_gain прямо здесь, теперь он будет работать!
-        max_gain = 50.0  # Попробуйте поставить 5.0, 20.0, 50.0
+        max_gain = 5.0  # Попробуйте поставить 5.0, 20.0, 50.0
         
         # Вместо деления на spectrum_heard + eps, используем регуляризацию Тихонова.
         # Она плавно гасит спектр там, где слышимый сигнал (знаменатель) слишком мал.
